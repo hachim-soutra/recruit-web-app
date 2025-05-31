@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /tag/
+Disallow: /find-jobs/
+Disallow: /app/
+Disallow: /public/
+Disallow: /services/
+Disallow: /blog/
+Disallow: /category/
+
+Sitemap: https://www.recruit.ie/sitemap.xml

@@ -1,0 +1,507 @@
+[16-Jan-2023 02:36:02 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 7.4.33. in /home/r587765/public_html/vendor/composer/platform_check.php on line 24
+[28-Jul-2023 19:26:53 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:26:55 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:27:08 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:28:01 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:28:15 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:28:17 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:28:18 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:28:19 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 19:28:24 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 21:01:09 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 21:01:22 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 21:01:26 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 21:01:51 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 21:02:00 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[28-Jul-2023 21:02:20 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:877
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#11 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#12 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#13 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:879
+Stack trace:
+#0 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\Container\Container->build()
+#1 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\Container\Container->resolve()
+#2 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\Foundation\Application->resolve()
+#3 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\Container\Container->make()
+#4 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(119): Illuminate\Foundation\Application->make()
+#5 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(926): app()
+#6 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(581): view()
+#7 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException()
+#8 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse()
+#9 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Exceptions\Handler->render()
+#10 /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(173): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#11 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#12 {main}
+  thrown in /home/r587765/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 879
+[29-Sep-2023 23:42:34 UTC] PHP Fatal error:  Trait "Laravel\Cashier\Billable" not found in /home/r587765/public_html/app/Models/User.php on line 33
+[29-Sep-2023 23:42:54 UTC] PHP Fatal error:  Trait "Laravel\Cashier\Billable" not found in /home/r587765/public_html/app/Models/User.php on line 33
+[02-Oct-2023 16:09:38 UTC] Stripe Notice: Undefined property of Stripe\PaymentMethod instance: stripe_id
+[02-Dec-2023 22:10:38 Europe/Dublin] PHP Warning:  require(/home/r587765/public_html/vendor/livewire/livewire/src/helpers.php): Failed to open stream: No such file or directory in /home/r587765/public_html/vendor/composer/autoload_real.php on line 53
+[02-Dec-2023 22:10:39 Europe/Dublin] PHP Fatal error:  Uncaught Error: Failed opening required '/home/r587765/public_html/vendor/composer/../livewire/livewire/src/helpers.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/r587765/public_html/vendor/composer/autoload_real.php:53
+Stack trace:
+#0 /home/r587765/public_html/vendor/composer/autoload_real.php(36): composerRequire8f38218f743f021868510a7c9fecff6e()
+#1 /home/r587765/public_html/vendor/autoload.php(25): ComposerAutoloaderInit8f38218f743f021868510a7c9fecff6e::getLoader()
+#2 /home/r587765/public_html/public/index.php(34): require('/home/r587765/p...')
+#3 {main}
+  thrown in /home/r587765/public_html/vendor/composer/autoload_real.php on line 53

@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Candidate extends Model
+{
+    use HasFactory;
+
+    protected $table = 'candidates';
+
+    protected $appends = ['resume_path', 'cover_letter_path', 'resume_name'];
+
+    protected $fillable = ['user_id', 'address', 'city', 'state', 'country', 'zip',
+        'total_experience_year', 'total_experience_month', 'alternate_mobile_number', 'highest_qualification', 
+        'specialization', 'university_or_institute', 'year_of_graduation', 'education_type', 'date_of_birth', 
+        'candidate_type', 'preferred_job_type', 'gender', 'marital_status', 'resume', 'cover_letter', 
+        'nationality', 'current_salary', 'expected_salary', 'salary_currency', 'resume_title', 'linkedin_link', 
+        'portfolio_link', 'notice_period', 'visa_status', 'bio', 'languages', 'functional_id',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function jobrole()
+    {
+        return $this->belongsTo(Industry::class, 'functional_id', 'id');
+    }
+
+    public function getResumeAttribute($value)
+    {
+        if ($value) {
+            return asset('/uploads/resume/' . $value);
+        } else {
+            return $value;
+        }
+    }
+
+    public function getResumeNameAttribute($value)
+    {
+        return $this->resume;
+    }
+
+    public function getResumePathAttribute()
+    {
+        if (array_key_exists('resume', $this->attributes)) {
+            return $this->attributes['resume'];
+        } else {
+            return "";
+        }
+    }
+
+    public function getCoverLetterAttribute($value)
+    {
+        if ($value) {
+            return $value;
+            // return asset('/uploads/cover_letter/' . $value);
+        } else {
+            return $value;
+        }
+    }
+
+    public function getCoverLetterPathAttribute()
+    {
+        if (array_key_exists('cover_letter', $this->attributes)) {
+            return $this->attributes['cover_letter'];
+        } else {
+            return "";
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # 301 Redirects for high ranking SERP Pages - 2023-08-17
+    RewriteRule ^tag/jobs/$ /careers/tag/jobs/ [L,R=301]
+    RewriteRule ^find-jobs/$ /careers/find-jobs/ [L,R=301]
+    RewriteRule ^public/app$ /careers/app/ [L,R=301]
+    RewriteRule ^category/recruitment-tips/$ /careers/category/recruitment-tips/ [L,R=301]
+    RewriteRule ^blog/$ /careers/blog/ [L,R=301]
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <title>@yield('title')</title>
+
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@yield('meta_desc')">
+    <meta name="google-site-verification" content="Eb-pIEzM_TY5v-4dTf1dAhj_V7fuvHOab49sUoDSZy0" />
+
+    @hasSection('meta_canonical')
+        <link rel="canonical" href="@yield('meta_canonical')">
+    @endif
+
+    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,100;1,200;1,300&display=swap"
+        rel="stylesheet">
+    <!-- font-family: 'Poppins', sans-serif; -->
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    <!-- owl-slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
+    <!-- owl-slider -->
+    <!-- owl-css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/lightbox.min.css') }}">
+    <!-- owl-css -->
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}">
+    <!-- #7-25-22 -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
+
+    <!-- font-awesome -->
+
+    <!-- light-box-js -->
+    <script type="text/javascript" src="{{ asset('frontend/js/lightbox-plus-jquery.min.js') }}"></script>
+    <!-- light-box-js -->
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/jquery.fancybox.min.css') }}">
+
+
+
+    <!-- countru-code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery.fancybox.min.js') }}"></script>
+
+    @yield('mystyle')
+
+    <?php
+	if(	/* true || */
+		$_SERVER['SERVER_NAME']=='recruit.ie'
+		||
+		$_SERVER['SERVER_NAME']=='www.recruit.ie'
+		||
+		$_SERVER['HTTP_HOST']=='recruit.ie'
+		||
+		$_SERVER['HTTP_HOST']=='www.recruit.ie'
+
+	): ?>
+	
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6659609817894470" crossorigin="anonymous"></script>
+	
+    <?php endif; ?>
+    @livewireStyles
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- header start -->
+    @include('site.layout.advertise-nav')
+    <!-- header end -->
+    <!-- header start -->
+    @include('site.layout.topbar')
+    <!-- header end -->
+    <!-- your-sector -->
+    @yield('content')
+    <!-- footer-block start-->
+    @include('site.layout.footer')
+    @include('site.layout.consent')
+    @include('site.layout.country-modal')
+    @if (!isset($_COOKIE['jobConsent']) && Cookie::get('jobConsent') === null)
+        @include('site.layout.consent-modal')
+    @endif
+    <!-- footer-block  end -->
+    <!-- js-link -->
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <!-- owl-js -->
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <!-- owl-js -->
+    <!-- count-js -->
+    <script type="text/javascript" src="{{ asset('frontend/js/count-script.js') }}"></script>
+    <!-- count-js -->
+    <script type="text/javascript" src="{{ asset('frontend/js/custome.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery.matchHeight-min.js') }}"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('LOCATION_API') }}&libraries=places&callback=Function.prototype">
+    </script>
+    <script>
+        function initialize() {
+
+            var map_options = {
+                componentRestrictions: {
+					country: 'ie'	/* AND */
+                },
+            };
+            var address = (document.getElementById('job_location'));
+            if (!address) {
+                return
+            }
+            var autocomplete = new google.maps.places.Autocomplete(address, map_options);
+
+            autocomplete.setTypes(['geocode']);
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    return;
+                }
+                document.getElementById("start_latitude").value = place.geometry.location.lat();
+                document.getElementById("start_longitude").value = place.geometry.location.lng();
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+            });
+        }
+        $(document).ready(function() {
+            //google.maps.event.addDomListener(window, 'load', initialize);
+            window.addEventListener('load', initialize);	/* AND */
+            const oldCountry = localStorage.getItem('country');
+            const consentJobsState = '<?=  isset($_COOKIE['jobConsent']) ? $_COOKIE['jobConsent'] : 'null' ?>';
+            if (consentJobsState === 'null' && window.location.href.indexOf("term-of-use") === -1) {
+                $('#consentModal').modal('show');
+            }
+            if (oldCountry == null) {
+                chooseCountry('world');
+            }
+        });
+
+        function chooseCountry(country) {
+            const oldCountry = localStorage.getItem('country');
+            if (oldCountry == null && country === 'world') {
+                localStorage.setItem('country', country);
+                document.cookie = `country=${country}`;
+            } else {
+                if (oldCountry !== country) {
+                    localStorage.setItem('country', country);
+                    document.cookie = `country=${country}`;
+                    toastr.success('Country changed successfully');
+                    $('#countryModal').modal('hide');
+                    setTimeout(() => {
+                        window.location = window.location.href.split("?")[0];
+                    }, 1000);
+                }
+            }
+        }
+    </script>
+    @yield('myscript')
+    @livewireScripts
+</body>
+
+</html>
