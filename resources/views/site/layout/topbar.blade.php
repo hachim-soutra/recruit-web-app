@@ -23,6 +23,9 @@
                     @endif
                     @if (Auth::user() == null || (Auth::user() && Auth::user()->user_type === 'candidate'))
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('common.job-listing') }}">Jobs</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('common.company-search') }}">Companies Hiring</a>
                         </li>
                         <li class="nav-item">

@@ -9,7 +9,7 @@
     </script>
 @endif
 <div class="inner-form-custom">
-    @include('site.layout.banner', ['stats' => $data['banner_stats']])
+    @include('site.layout.banner-listing', ['stats' => $data['banner_stats']])
 </div>
 @if ($data['count'] <= 0)
     <div class="login-block">
