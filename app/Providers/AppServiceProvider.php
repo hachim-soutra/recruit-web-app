@@ -23,22 +23,34 @@ class AppServiceProvider extends ServiceProvider
     }
 
     public function boot()
-    {
-        if (config('app.env') === 'production') {
-            URL::forceScheme('https');
-        }
-        Paginator::useBootstrap();
-        Schema::defaultStringLength(191);
-
-        //send data to view
-        $settings = Setting::where('status', '1')->first();
-        $sector = Industry::where('status', '1')->get();
-        //$newscat = NewsCategory::where([['status', '!=', 'D']])->where('navbar_show', '1')->get();
-        $newscat = array();
-        $homePageContent = HomePageContent::take(1)->first();
-        $homePageRecruitmentType = HomePageRecruitmentType::orderBy('updated_at', 'DESC')->take(3)->get();
-        view()->share(compact('settings', 'sector', 'newscat', 'homePageContent', 'homePageRecruitmentType'));
-        Cashier::useCustomerModel(User::class);
-        Cashier::useSubscriptionModel(Subscription::class);
+{
+    if (config('app.env') === 'production') {
+        \Illuminate\Support\Facades\URL::forceScheme('https');
     }
+
+    \Illuminate\Pagination\Paginator::useBootstrap();
+    \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+
+    // Prevent Eloquent queries during composer install or migration
+    if (!$this->app->runningInConsole()) {
+        $settings = \App\Models\Setting::where('status', '1')->first();
+        $sector = \App\Models\Industry::where('status', '1')->get();
+        //$newscat = \App\Models\NewsCategory::where([['status', '!=', 'D']])->where('navbar_show', '1')->get();
+        $newscat = [];
+        $homePageContent = \App\Models\HomePageContent::take(1)->first();
+        $homePageRecruitmentType = \App\Models\HomePageRecruitmentType::orderBy('updated_at', 'DESC')->take(3)->get();
+
+        view()->share(compact(
+            'settings',
+            'sector',
+            'newscat',
+            'homePageContent',
+            'homePageRecruitmentType'
+        ));
+    }
+
+    \Laravel\Cashier\Cashier::useCustomerModel(\App\Models\Cashier\User::class);
+    \Laravel\Cashier\Cashier::useSubscriptionModel(\App\Models\Subscription::class);
+}
+
 }
