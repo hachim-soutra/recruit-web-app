@@ -13,12 +13,6 @@ jobs:
       - name: 🛒 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🔐 Setup SSH
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p 21098 -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
       - name: 🚀 Deploy Laravel via SSH
         run: |
           ssh -p 21098 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
