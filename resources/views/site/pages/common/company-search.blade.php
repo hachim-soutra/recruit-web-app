@@ -68,7 +68,7 @@
     <div class="post-resume-one">
         <div class="container">
             <div class="title-block">
-                <h2>Companies' List</h2>
+                <h2>Companies List</h2>
             </div>
             <div class="bd-block">
                 There are some great companies to work for; all you need to do is find them. Search all our direct employers by name.

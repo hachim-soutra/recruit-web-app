@@ -1,3 +1,27 @@
+<script>
+    $(document).ready(function() {
+        const brandTrack = $('.brand-track');
+
+        $('.brand-slider').on('mouseenter', function() {
+            brandTrack.css('animation-play-state', 'paused');
+        }).on('mouseleave', function() {
+            brandTrack.css('animation-play-state', 'running');
+        });
+
+        // Touch support for mobile
+        let startX = 0;
+
+        $('.brand-slider').on('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            brandTrack.css('animation-play-state', 'paused');
+        });
+
+        $('.brand-slider').on('touchend', function() {
+            brandTrack.css('animation-play-state', 'running');
+        });
+    });
+</script>
+
 <div class="banner-block">
     <div class="container">
         <div class="banner-bd">
@@ -8,23 +32,46 @@
             </h4>
 
             <div class="d-flex flex-row align-items-center justify-content-center">
-                <a class="banner-bd-button btn btn-md py-3 mx-auto" href="{{ route('common.job-listing') }}">
-                    Explore Job Listings
+                <a class="banner-bd-company-button btn btn-outline btn-md py-3" href="{{ route('common.company-search') }}">
+                    Discover Companies
                     <i class="fa fa-arrow-right ml-2"></i>
                 </a>
+                <a class="banner-bd-button btn btn-md py-3 ml-0 ml-md-3" href="{{ route('common.job-listing') }}">
+                    Explore Job Listings
+                </a>
             </div>
+
+            <div class="brand-carousel">
+                <div class="carousel-title">
+                    Our Trusted Partners
+                </div>
+                <div class="brand-slider">
+                    <div class="brand-track">
+                        {{-- First set of brands --}}
+                        @foreach($stats['companies_list'] as $brand)
+                            <div class="brand-item">
+                                <a href="{{  route('common.company-detail', [ 'id' => $brand->id ]) }}">
+                                    <img src="{{ asset($brand->company_logo) }}"
+                                         alt="{{ $brand->user->name ?? '' }}"
+                                         loading="lazy">
+                                </a>
+                            </div>
+                        @endforeach
+
+                        {{-- Duplicate set for seamless loop --}}
+                        @foreach($stats['companies_list'] as $brand)
+                            <div class="brand-item">
+                                <a href="{{  route('common.company-detail', [ 'id' => $brand->id ]) }}">
+                                    <img src="{{ asset($brand->company_logo) }}"
+                                         alt="{{ $brand->user->name ?? '' }}"
+                                         loading="lazy">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-    <div
-        class="item-row-second d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between px-2 py-4 bg-white">
-        <p class="mb-0 search-banner-company-title">
-            <span style="color: var(--red-color)">{{ $stats['jobs'] }}</span>
-            job ads |
-            <span style="color: var(--red-color)">{{ $stats['companies'] }}</span>
-            companies
-        </p>
-        <a href="{{ route('common.company-search') }}" class="banner-company-button mt-2 mt-md-0">
-            See all hiring companies
-        </a>
     </div>
 </div>
