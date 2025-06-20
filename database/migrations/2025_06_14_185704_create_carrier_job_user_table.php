@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJobRolesTable extends Migration
+class CreateCarrierJobUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateJobRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_roles', function (Blueprint $table) {
+        Schema::create('carrier_job_user', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('description')->nullable();
+            $table->integer('user_id');
+            $table->integer('job_id');
+            $table->integer('job_apply_id')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateJobRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_roles');
+        Schema::dropIfExists('carrier_job_user');
     }
 }

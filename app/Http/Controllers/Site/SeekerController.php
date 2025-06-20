@@ -21,6 +21,7 @@ use App\Models\CoachBookmark;
 use App\Models\Coach;
 use App\Models\State;
 use App\Models\Candidate;
+use App\Models\CarrierJobUser;
 use App\Models\ChatRoom;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -149,6 +150,15 @@ class SeekerController extends Controller
         return response()->json(['code' => 200, 'uploaded_resume' => $uploaded_resume, 'uploaded_cl' => $uploaded_cl]);
     }
 
+    public function saveJobCarrier(Request $request)
+    {
+        CarrierJobUser::firstOrCreate([
+            'user_id' => auth()->id(),
+            'job_id' => $request->input('job_id'),
+        ]);
+        return response()->json(['code' => 200, 'message' => 'job carrier saved']);
+    }
+
     public function applyJob(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -161,7 +171,8 @@ class SeekerController extends Controller
         $applicant = Candidate::where('user_id', Auth::id())->first();
         $applicantCV = $applicant->resume;
 
-        if ($applicantCV == null) {
+        $job      = JobPost::where('id', $request->input('job_id'))->first();
+        if ($applicantCV == null && $job->post_job_type !== 'career_website') {
             return response()->json(['code' => 403, 'msg' => "Please add a CV to apply to jobs."]);
         }
 
@@ -170,7 +181,14 @@ class SeekerController extends Controller
         $apply->job_id       = $request->input('job_id');
         $apply->save();
 
-        $job      = JobPost::where('id', $request->input('job_id'))->first();
+        $jobUser = CarrierJobUser::where('user_id', Auth::user()->id)
+        ->where('job_id', $request->input('job_id'))
+        ->first();
+
+        if ($jobUser) {
+            $jobUser->update(['job_apply_id' => $apply->id]);
+        }
+
         $employer = User::where('id', $job->employer_id)->first();
         $data = array();
         $e_data = array();

@@ -31,6 +31,9 @@
             background: unset !important;
             padding-right: 5px !important;
         }
+        select.form-control:not([size]):not([multiple]) {
+            height: 52px !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -258,6 +261,27 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-6 mt-3 mt-md-0">
+                                    <label for="post_job_type">Job Posting Platform</label>
+                                    <select name="post_job_type" id="post_job_type" class="form-control @error('post_job_type') is-invalid @enderror" onchange="toggleApplicationUrlField()">
+                                        <option disabled selected>Choose option</option>
+                                        <option value="recruit_ie" {{ old('post_job_type') == 'recruit_ie' ? 'selected' : '' }}>Recruit.ie</option>
+                                        <option value="career_website" {{ old('post_job_type') == 'career_website' ? 'selected' : '' }}>Career Website</option>
+                                    </select>
+                                    @error('post_job_type')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mt-3 mt-md-0" id="application_url_wrapper" style="display: {{ old('post_job_type') == 'career_website' ? 'block' : 'none' }};">
+                                    <label for="application_url">Application URL</label>
+                                    <input type="url" name="application_url" id="application_url" value="{{ old('application_url') }}" class="form-control @error('application_url') is-invalid @enderror" placeholder="https://example.com/apply">
+                                    @error('application_url')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <label for="">Job Details</label>
                                     <textarea class="textarea" name="job_details" id="job_details" placeholder="Write Down Job Details Here."
@@ -323,6 +347,8 @@
                 placeholder: "Select any additional pay."
             });
             postJob_formShow();
+
+
         });
 
         function postJob_formShow(showmsg = null) {
@@ -410,6 +436,7 @@
                     console.log(err);
                 },
             });
+            toggleApplicationUrlField();
         }
         $('.numberonly').keypress(function(e) {
             var charCode = (e.which) ? e.which : event.keyCode
@@ -419,6 +446,16 @@
         setTimeout(() => {
             $('.alert').hide();
         }, 3500);
+        function toggleApplicationUrlField() {
+            const selected = document.getElementById('post_job_type');
+            const wrapper = document.getElementById('application_url_wrapper');
+
+            if (selected.value === 'career_website') {
+                wrapper.style.display = 'block';
+            } else {
+                wrapper.style.display = 'none';
+            }
+        }
     </script>
     <script>
         function initialize() {

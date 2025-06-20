@@ -188,6 +188,7 @@ Route::group(['middleware' => 'revalidate'], function () {
             Route::get('search-candidate', 'SeekerController@searchCandidate')->name('search-candidate');
             Route::post('update-resume-coverletter', 'SeekerController@updateResumeCoverletter')->name('update-resume-coverletter');
             Route::post('apply-job', 'SeekerController@applyJob')->name('apply-job');
+            Route::post('save-job-carrier', 'SeekerController@saveJobCarrier')->name('save-job-carrier');
             #favourite jobs
             Route::get('favourite-job', 'SeekerController@favouriteJob')->name('favourite-job');  ## bookmarked job list ##
             #event

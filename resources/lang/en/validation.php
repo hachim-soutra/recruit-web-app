@@ -150,6 +150,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'post_job_type' => 'Job Posting Platform',
+        'application_url_wrapper' => 'Application URL',
+    ],
 
 ];

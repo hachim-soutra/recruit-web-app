@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSubscriptionIdToJobPostsTable extends Migration
+class AddJobPostingFieldsToJobPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddSubscriptionIdToJobPostsTable extends Migration
     public function up()
     {
         Schema::table('job_posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('subscription_id')->after('employer_id')->nullable();
+            $table->string('post_job_type')->default('recruit_ie');
+            $table->string('application_url')->nullable()->after('post_job_type');
         });
     }
 
@@ -26,7 +27,7 @@ class AddSubscriptionIdToJobPostsTable extends Migration
     public function down()
     {
         Schema::table('job_posts', function (Blueprint $table) {
-            $table->dropColumn('subscription_id');
+            $table->dropColumn(['post_job_type', 'application_url']);
         });
     }
 }

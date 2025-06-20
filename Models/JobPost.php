@@ -20,8 +20,8 @@ class JobPost extends Model
     // 'not_interested_job',
 
     protected $fillable = ['employer_id', 'job_expiry_date', 'salary_from', 'salary_to', 'salary_currency', 'salary_period', 'hide_salary', 'job_title', 'job_location', 'qualifications', 'city', 'state', 'country', 'zip', 'job_skills', 'functional_area', 'preferred_job_type', 'experience', 'total_hire', 'job_details', 'status', 'payment_status', 'job_status', 'additinal_pay', 'created_by', 'updated_by',
-    ];
-   
+    'post_job_type', 'application_url'];
+
 
     public function applicatons()
     {
@@ -62,7 +62,7 @@ class JobPost extends Model
 
     public function getCompanyLogoAttribute()
     {
-        
+
         $logo = Employer::where('user_id', $this->attributes['employer_id'])
             ->first();
         if ($logo) {
@@ -70,7 +70,7 @@ class JobPost extends Model
                 return $logo->company_logo;
             }else{
                 return env('APP_URL')."/uploads/company_logo/no_logo.jpeg";
-            }            
+            }
         } else {
             return env('APP_URL')."/uploads/company_logo/no_logo.jpeg";
         }
