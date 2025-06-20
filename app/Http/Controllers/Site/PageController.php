@@ -58,12 +58,11 @@ class PageController extends Controller
 
     public function index()
     {
-        $data['banner_stats']['jobs'] = JobPost::count();
         $data['news'] = News::where('status', NewsStatusEnum::SHOW_IN_HOME)->orderBy('id', 'DESC')->get();
         $data['events'] = Event::where('status', EventStatusEnum::SHOW_IN_HOME)->orderBy('id', 'DESC')->get();
         $data['advices'] = Advice::where('status', AdviceStatusEnum::SHOW_IN_HOME)->orderBy('id', 'DESC')->get();
         $data['latest_jobs'] = JobPost::where('show_in_home', '1')->orderBy('created_at', 'desc')->get();
-        $data['banner_stats']['companies'] = Employer::count();
+        $data['banner_stats']['companies_list'] = Employer::latest()->take(10)->with('user')->get();
         $data['sectors'] = Industry::where('status', '1')->get('name');
         $data['roles'] = config('app.roles');
         $data['employers'] = Employer::whereHas("user", function ($q) {
