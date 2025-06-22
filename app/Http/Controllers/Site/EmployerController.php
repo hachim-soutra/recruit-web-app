@@ -214,6 +214,8 @@ class EmployerController extends Controller
                 'job_details'        => 'required',
                 'additinal_pay'      => 'nullable|array',
                 'job_status'         => 'required',
+                'post_job_type'      => 'required|in:recruit_ie,career_website',
+                'application_url'    => Rule::when(
                     fn ($input) => $input->post_job_type === 'career_website',
                     ['required', 'url'],
                     ['nullable']
