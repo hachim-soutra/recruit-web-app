@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         SendCampaignCommand::class,
         SendMailChat::class,
+        SendCarrierJobList::class,
         // UpdateJobCountryIfNull::class,
         // UpdateCompanyCountryIfNull::class,
     ];
@@ -36,6 +37,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('planexpiry:cron')->daily();
         $schedule->command('send:campaign')->everyMinute();
         $schedule->command('send:mail-chat')->hourly();
+        $schedule->command('carriers:send-job-list')
+                ->dailyAt('20:00')
+                ->onOneServer()
+                ->withoutOverlapping();
         // $schedule->command('update:country-if-null')->everyTwoMinutes();
         // $schedule->command('update:company-country-if-null')->everyFiveMinutes();
     }
