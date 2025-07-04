@@ -6,6 +6,7 @@ use App\Console\Commands\SendCampaignCommand;
 use App\Console\Commands\SendMailChat;
 use App\Console\Commands\UpdateCompanyCountryIfNull;
 use App\Console\Commands\UpdateJobCountryIfNull;
+use App\Console\Commands\SendCarrierJobList;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

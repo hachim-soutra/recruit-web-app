@@ -43,7 +43,7 @@
                                     <label class="control-label" for="employer">Employer</label>
                                     <select class="form-control" name="employer" id="employer">
                                         <option></option>
-                                         @forelse ($employers as $row)
+                                        @forelse ($employers as $row)
                                             <option value="{{ $row->id }}">
                                                 {{ $row->name }}
                                             </option>
@@ -254,6 +254,27 @@
 
                         </div>
                         <div class="row">
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="post_job_type">Job Posting Platform</label>
+                                <select name="post_job_type" id="post_job_type" class="form-control @error('post_job_type') is-invalid @enderror" onchange="toggleApplicationUrlField()">
+                                    <option disabled selected>Choose option</option>
+                                    <option value="recruit_ie" {{ old('post_job_type') == 'recruit_ie' ? 'selected' : '' }}>Recruit.ie</option>
+                                    <option value="career_website" {{ old('post_job_type') == 'career_website' ? 'selected' : '' }}>Career Website</option>
+                                </select>
+                                @error('post_job_type')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mt-3 mt-md-0" id="application_url_wrapper" style="display: {{ old('post_job_type') == 'career_website' ? 'block' : 'none' }};">
+                                <label for="application_url">Application URL</label>
+                                <input type="url" name="application_url" id="application_url" value="{{ old('application_url') }}" class="form-control @error('application_url') is-invalid @enderror" placeholder="https://example.com/apply">
+                                @error('application_url')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label for="job_details">Details</label>
@@ -340,6 +361,16 @@
         .catch( error => {
             console.error( error );
     });
+    function toggleApplicationUrlField() {
+        const selected = document.getElementById('post_job_type');
+        const wrapper = document.getElementById('application_url_wrapper');
+
+        if (selected.value === 'career_website') {
+            wrapper.style.display = 'block';
+        } else {
+            wrapper.style.display = 'none';
+        }
+    }
 </script>
 @include('admin.scripts.job')
 @include('admin.scripts.location')
