@@ -31,12 +31,12 @@
                 You next career move start here.
             </h4>
 
-            <div class="d-flex flex-row align-items-center justify-content-center">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
                 <a class="banner-bd-company-button btn btn-outline btn-md py-3" href="{{ route('common.company-search') }}">
                     Discover Companies
                     <i class="fa fa-arrow-right ml-2"></i>
                 </a>
-                <a class="banner-bd-button btn btn-md py-3 ml-0 ml-md-3" href="{{ route('common.job-listing') }}">
+                <a class="banner-bd-button btn btn-md py-3 mt-3 mt-md-0 ml-0 ml-md-3" href="{{ route('common.job-listing') }}">
                     Explore Job Listings
                 </a>
             </div>
