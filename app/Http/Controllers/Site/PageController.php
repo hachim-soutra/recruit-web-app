@@ -30,6 +30,7 @@ use App\Models\Qualification;
 use App\Models\UserEducation;
 use App\Models\Language;
 use App\Models\Candidate;
+use App\Services\Admin\MailerLiteService;
 use App\Services\Common\BlogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -50,10 +51,12 @@ use Illuminate\Support\Str;
 class PageController extends Controller
 {
     private $blogService;
+    private $mailerliteService;
 
-    public function __construct(BlogService $blogService)
+    public function __construct(BlogService $blogService, MailerLiteService $mailerliteService)
     {
         $this->blogService = $blogService;
+        $this->mailerliteService = $mailerliteService;
     }
 
     public function index()
@@ -291,7 +294,7 @@ class PageController extends Controller
         $data["usertype"] = "candidate";
         $user = User::where("email", $request->email)->first();
         if ($user && $user->user_type != 'candidate') {
-            throw ValidationException::withMessages(['email' => 'This user exists already.']);
+            throw ValidationException::withMessages(['email' => 'This user exists already and is not a job seeker.']);
         }
         if (!$user) {
             $user = $userService->register($data);
@@ -304,6 +307,20 @@ class PageController extends Controller
         $alert->preferred_job_type = $request->preferred_job_type;
         $alert->job_location = $request->job_location;
         $alert->save();
+
+        $salary_range = null;
+        if ($request->salary_rate != null) {
+            $salary_range = explode("|", $request->salary_rate)[1];
+        }
+        $this->mailerliteService->processSubscriberToAlerts([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'salary_range' => $salary_range != null ? (int)$salary_range : null,
+            'salary_period' => $request->salary_period,
+            'employment_type' => $request->preferred_job_type,
+            'industry' => $request->industry
+        ]);
 
         return redirect()->back()->withSuccess('Job Alerts Created Successfully.');
     }

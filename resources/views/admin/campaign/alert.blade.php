@@ -39,6 +39,7 @@
                             <table class="table table-hover">
                                 <tr>
                                     <th scope="col">Job seeker</th>
+                                    <th scope="col">E-mail</th>
                                     <th scope="col">Industry</th>
                                     <th scope="col">Salary Period</th>
                                     <th scope="col">Salary Range</th>
@@ -49,6 +50,7 @@
                                 @forelse ($data as $e)
                                     <tr>
                                         <td>{{ $e->candidate?->user?->name }}</td>
+                                        <td>{{ $e->candidate?->user?->email }}</td>
                                         <td>{{ $e->industry }}</td>
                                         <td>{{ $e->salary_period }}</td>
                                         <td>{{ $e->salary_rate }}</td>
