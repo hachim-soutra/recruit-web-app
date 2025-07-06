@@ -9,18 +9,25 @@
                 <a href="{{ route('common.job-detail', [ 'id' => $firstJobDetail->slug  ]) }}" class="title-more-link">
                     <h4>{{ $firstJobDetail->job_title }}</h4>
                 </a>
-                <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
+                <div class="d-flex gap-2 flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
                     <div>
                         @if(Auth::user() == null || Auth::user()->user_type === 'candidate')
                             @if ($firstJobDetail->applicatons() != null && $firstJobDetail->applicatons()->where('candidate_id', Auth::id())->exists())
                                 <button type="button" class="btn btn-success appliedbtn"><i
                                         class="fa fa-check" style="font-size: xx-small;"></i>
-                                    Applied
+                                    {{$firstJobDetail->post_job_type === 'career_website' ? 'Applied via Career Website' : 'Applied'}}
                                 </button>
+                            @elseif ($firstJobDetail->post_job_type === 'career_website')
+                                <input type="button"
+                                    id="jobapplybtn"
+                                    class="jobapplybtn"
+                                    value="Apply via Career Website"
+                                    onclick="applyViaCareerWebsite('{{ $firstJobDetail->application_url }}', '{{ $firstJobDetail->id }}')"
+                            />
                             @else
                                 <input type="button" id="jobapplybtn" class="jobapplybtn"
-                                       value="Apply" name=""
-                                       onclick="jobApply('{{ $firstJobDetail->id }}')"
+                                    value="Apply" name=""
+                                    onclick="jobApply('{{ $firstJobDetail->id }}')"
                                 />
                             @endif
                         @endif
@@ -161,6 +168,25 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="applyConfirmModal" tabindex="-1" aria-labelledby="applyConfirmLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="applyConfirmLabel">Confirm Application</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Did you apply for this job on the external career website?
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="confirmNo" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" id="confirmYes" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 @include('site.pages.partial.common.job-detail.share-job-modal', [
     'job' => $firstJobDetail,
 ])
@@ -190,5 +216,71 @@
                 toastr.error('Failed to copy job link');
             });
         }
+    }
+
+    function applyViaCareerWebsite(url, jobId) {
+        var isAuthenticated = @json(auth()->check());
+        if (!isAuthenticated) {
+            window.location.href = "{{ route('signin') }}" + '/' +jobId;
+            return;
+        }
+        window.open(url, '_blank');
+         $.ajax({
+            url: APP_URL +'/save-job-carrier',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                job_id: jobId
+            }}
+        );
+        setTimeout(() => {
+            window.addEventListener('focus', function onFocus() {
+                window.removeEventListener('focus', onFocus);
+                showConfirmationPopup(jobId);
+            });
+        }, 500);
+    }
+
+    function showConfirmationPopup(jobId) {
+        $('#applyConfirmModal').modal({ backdrop: 'static',
+            keyboard: false,
+            show: true
+        });
+
+        $('#confirmYes').off('click').on('click', function () {
+            const APP_URL = '<?= env('APP_URL') ?>';
+            jobApply(jobId);
+            // $.ajax({
+            //     url: APP_URL +'/apply-job',
+            //     type: 'POST',
+            //     data: {
+            //         _token: '{{ csrf_token() }}',
+            //         job_id: jobId
+            //     },
+            //     // beforeSend: function () {
+            //     //     $('#confirmYes').prop('disabled', true);
+            //     // },
+            //     // complete: function () {
+            //     //     $('#confirmYes').prop('disabled', false);
+            //     // },
+            //     success: function (res) {
+            //         if (res.code === 200) {
+            //             toastr.success(res.msg);
+            //             $('#applyConfirmModal').modal('hide');
+            //             setTimeout(() => location.reload(), 2500);
+            //         } else {
+            //             toastr.error(res.msg);
+            //         }
+            //     },
+            //     error: function (err) {
+            //         console.error(err);
+            //         toastr.error('An error occurred. Please try again.');
+            //     }
+            // });
+        });
+
+        $('#confirmNo').off('click').on('click', function() {
+            $('#applyConfirmModal').modal('hide');
+        });
     }
 </script>

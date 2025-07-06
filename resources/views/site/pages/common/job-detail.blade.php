@@ -76,19 +76,26 @@
                     </div>
                     <div class="row mt-md-3">
                         <div class="col-12 d-flex flex-column flex-md-row align-items-center justify-content-md-between">
-                            <div class="d-flex flex-row align-items-center justify-content-center">
+                            <div class="d-flex flex-row align-items-center justify-content-center" style="gap: 10px;">
                                 @if(Auth::user() == null || Auth::user()->user_type === 'candidate')
                                     @if ($data['jobPost']->applicatons() != null && $data['jobPost']->applicatons()->where('candidate_id', Auth::id())->exists())
-                                        <button type="button" class="btn btn-success appliedbtn mr-2"><i
-                                                class="fa fa-check  mr-2" style="font-size: xx-small;"></i>
-                                            Applied
+                                        <button type="button" class="btn btn-success appliedbtn"><i
+                                                class="fa fa-check" style="font-size: xx-small;"></i>
+                                            {{$data['jobPost']->post_job_type === 'career_website' ? 'Applied via Career Website' : 'Applied'}}
                                         </button>
+                                    @elseif ($data['jobPost']->post_job_type === 'career_website')
+                                        <input type="button"
+                                            id="jobapplybtn"
+                                            class="jobapplybtn"
+                                            value="Apply via Career Website"
+                                            onclick="applyViaCareerWebsite('{{ $data["jobPost"]->application_url }}', '{{ $data['jobPost']->id }}')"
+                                    />
                                     @else
-                                        <input type="button" id="jobapplybtn" class="jobapplybtn mr-2"
-                                               value="Apply" name=""
-                                               onclick="jobApply('{{ $data['jobPost']->id }}')"
+                                        <input type="button" id="jobapplybtn" class="jobapplybtn"
+                                            value="Apply" name=""
+                                            onclick="jobApply('{{ $data['jobPost']->id }}')"
                                         />
-                                    @endif
+                            @endif
                                 @endif
 
                                 <a href="{{  route('common.company-detail', [ 'id' => $data['jobPost']->company_id ]) }}"
@@ -403,6 +410,7 @@
                 processData: false,
                 contentType: false,
                 beforeSend: function() {
+                    $('#btn-update').prop('disabled', true);
                     $('#btn-update').html(
                         '<i class="fa fa-circle-o-notch fa-spin"></i> Updating! Please wait ...');
                 },
@@ -544,5 +552,70 @@
             }
         }
 
+    function applyViaCareerWebsite(url, jobId) {
+        var isAuthenticated = @json(auth()->check());
+        if (!isAuthenticated) {
+            window.location.href = "{{ route('signin') }}" + '/' +jobId;
+            return;
+        }
+        window.open(url, '_blank');
+         $.ajax({
+            url: APP_URL +'/save-job-carrier',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                job_id: jobId
+            }}
+        );
+        setTimeout(() => {
+            window.addEventListener('focus', function onFocus() {
+                window.removeEventListener('focus', onFocus);
+                showConfirmationPopup(jobId);
+            });
+        }, 500);
+    }
+
+    function showConfirmationPopup(jobId) {
+        $('#applyConfirmModal').modal({ backdrop: 'static',
+            keyboard: false,
+            show: true
+        });
+
+        $('#confirmYes').off('click').on('click', function () {
+            const APP_URL = '<?= env('APP_URL') ?>';
+            jobApply(jobId);
+            // $.ajax({
+            //     url: APP_URL +'/apply-job',
+            //     type: 'POST',
+            //     data: {
+            //         _token: '{{ csrf_token() }}',
+            //         job_id: jobId
+            //     },
+            //     // beforeSend: function () {
+            //     //     $('#confirmYes').prop('disabled', true);
+            //     // },
+            //     // complete: function () {
+            //     //     $('#confirmYes').prop('disabled', false);
+            //     // },
+            //     success: function (res) {
+            //         if (res.code === 200) {
+            //             toastr.success(res.msg);
+            //             $('#applyConfirmModal').modal('hide');
+            //             setTimeout(() => location.reload(), 2500);
+            //         } else {
+            //             toastr.error(res.msg);
+            //         }
+            //     },
+            //     error: function (err) {
+            //         console.error(err);
+            //         toastr.error('An error occurred. Please try again.');
+            //     }
+            // });
+        });
+
+        $('#confirmNo').off('click').on('click', function() {
+            $('#applyConfirmModal').modal('hide');
+        });
+    }
     </script>
 @endsection

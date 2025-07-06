@@ -247,6 +247,23 @@
                             </div>
 
                         </div>
+                         <div class="row">
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="post_job_type">Job Posting Platform</label>
+                                <select name="post_job_type" id="post_job_type" class="form-control" onchange="toggleApplicationUrlField()">
+                                    <option disabled {{ old('post_job_type', $job->post_job_type) ? '' : 'selected' }}>Choose option</option>
+                                    <option value="recruit_ie" {{ old('post_job_type', $job->post_job_type) === 'recruit_ie' ? 'selected' : '' }}>Recruit.ie</option>
+                                    <option value="career_website" {{ old('post_job_type', $job->post_job_type) === 'career_website' ? 'selected' : '' }}>Career Website</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0" id="application_url_wrapper"
+                                style="display: {{ old('post_job_type', $job->post_job_type) === 'career_website' ? 'block' : 'none' }};">
+                                <label for="application_url">Application URL</label>
+                                <input type="url" name="application_url" id="application_url"
+                                    value="{{ old('application_url', $job->application_url) }}"
+                                    class="form-control" placeholder="https://example.com/apply">
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -331,6 +348,20 @@
     ClassicEditor.create( document.querySelector( '#job_details' ) )
         .catch( error => {
             console.error( error );
+    });
+
+    function toggleApplicationUrlField() {
+        const selected = document.getElementById('post_job_type');
+        const wrapper = document.getElementById('application_url_wrapper');
+
+        if (selected.value === 'career_website') {
+            wrapper.style.display = 'block';
+        } else {
+            wrapper.style.display = 'none';
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        toggleApplicationUrlField();
     });
 </script>
 @endsection

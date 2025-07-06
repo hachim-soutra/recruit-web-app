@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label for="job_location">Job Location</label>
                                     <input type="text" autocomplete="off" class="form-control" id="job_location" name="job_location" placeholder="Job Location" value="{{$job->job_location}}" readonly />
-									
+
 									<input type="hidden" id="start_latitude" name="start_latitude" value="" />
 									<input type="hidden" id="start_longitude" name="start_longitude" value="" />
                                 </div>
@@ -164,6 +164,14 @@
                                   <label for="job_details">Industry : </label>{{ $job->functional_area }}
                                 </div>
                             </div>
+                            @if($job->application_url)
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="job_details">Application URL : </label>
+                                    <a href="{{ $job->application_url }}" target="_blank">{!! $job->application_url !!}</a>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label for="job_details">Details : </label>{!! $job->job_details !!}

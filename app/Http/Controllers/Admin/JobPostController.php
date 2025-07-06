@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class JobPostController extends Controller
 {
@@ -126,6 +127,12 @@ class JobPostController extends Controller
             'salary_period'      => 'required',
             'hide_salary'        => 'required',
             'qualifications'     => 'required|array|min:1',
+            'post_job_type'      => 'required|in:recruit_ie,career_website',
+            'application_url'    => Rule::when(
+                fn ($input) => $input->post_job_type === 'career_website',
+                ['required', 'url'],
+                ['nullable']
+            ),
         ]);
 
         if ($validator->fails()) {
@@ -137,19 +144,19 @@ class JobPostController extends Controller
             ], 200);
         }
 
-        $subscription = Subscription::where([
-            'user_id'       => $request->input('employer'),
-            'status'        => SubscriptionStatusEnum::IN_USE
-        ])->first();
+        // $subscription = Subscription::where([
+        //     'user_id'       => $request->input('employer'),
+        //     'status'        => SubscriptionStatusEnum::IN_USE
+        // ])->first();
 
-        if (!$subscription) {
-            return response()->json([
-                'data' => [
-                    "status"  => 'error',
-                    'message' => 'Sorry the employer not have a valid subscription.',
-                ],
-            ], 200);
-        }
+        // if (!$subscription) {
+        //     return response()->json([
+        //         'data' => [
+        //             "status"  => 'error',
+        //             'message' => 'Sorry the employer not have a valid subscription.',
+        //         ],
+        //     ], 200);
+        // }
 
         $post                     = new JobPost;
         $post->job_title          = $request->input('job_title');
@@ -165,7 +172,7 @@ class JobPostController extends Controller
         $post->total_hire         = $request->input('total_hire', null);
         $post->job_details        = $request->input('job_details', null);
         $post->employer_id        = $request->input('employer');
-        $post->subscription_id    = $subscription->id;
+        // $post->subscription_id    = $subscription->id;
         $post->job_expiry_date    = $request->input('job_expiry_date', Carbon::now()->addMonths(6));	/* AND */
         if ($request->input('hide_salary') == 'no') {
             $post->salary_from     = $request->input('salary_from');
@@ -183,7 +190,8 @@ class JobPostController extends Controller
         $post->payment_status = "Paid";
         $post->job_status     = "Published";
         $post->created_by     = Auth::user()->id;
-
+        $post->post_job_type = $request->post_job_type;
+        $post->application_url = $request->post_job_type === 'career_website' ? $request->application_url : null;
         if ($post->save()) {
 
             return response()->json([
@@ -205,7 +213,8 @@ class JobPostController extends Controller
 
     public function show($id)
     {
-        $job = JobPost::select('id', 'employer_id', 'job_expiry_date', 'salary_from', 'salary_to', 'salary_currency', 'salary_period', 'hide_salary', 'job_title', 'job_location', 'qualifications', 'city', 'state', 'country', 'zip', 'job_skills', 'functional_area', 'preferred_job_type', 'experience', 'total_hire', 'job_details', 'status', 'created_by', 'updated_by', )->where('id', $id)
+        $job = JobPost::
+            select('id', 'employer_id', 'job_expiry_date', 'salary_from', 'salary_to', 'salary_currency', 'salary_period', 'hide_salary', 'job_title', 'job_location', 'qualifications', 'city', 'state', 'country', 'zip', 'job_skills', 'functional_area', 'preferred_job_type', 'experience', 'total_hire', 'job_details', 'status', 'created_by', 'updated_by', 'application_url')->where('id', $id)
             ->with('employer')
             ->first();
         $skill = json_decode($job->job_skills, true);
@@ -251,6 +260,12 @@ class JobPostController extends Controller
             'salary_period'      => 'required',
             'hide_salary'        => 'required',
             'qualifications'     => 'required|array|min:1',
+            'post_job_type'      => 'required|in:recruit_ie,career_website',
+            'application_url'    => Rule::when(
+                fn ($input) => $input->post_job_type === 'career_website',
+                ['required', 'url'],
+                ['nullable']
+            ),
         ]);
 
         if ($validator->fails()) {
@@ -267,14 +282,14 @@ class JobPostController extends Controller
             'status'        => SubscriptionStatusEnum::IN_USE
         ])->first();
 
-        if (!$subscription) {
-            return response()->json([
-                'data' => [
-                    "status"  => 'error',
-                    'message' => 'Sorry the employer not have a valid subscription.',
-                ],
-            ], 200);
-        }
+        // if (!$subscription) {
+        //     return response()->json([
+        //         'data' => [
+        //             "status"  => 'error',
+        //             'message' => 'Sorry the employer not have a valid subscription.',
+        //         ],
+        //     ], 200);
+        // }
 
         $post                     = JobPost::where('id', $id)->first();
 
@@ -291,7 +306,7 @@ class JobPostController extends Controller
         $post->total_hire         = $request->input('total_hire', null);
         $post->job_details        = $request->input('job_details', null);
         $post->employer_id        = $request->input('employer');
-        $post->subscription_id    = $subscription->id;
+        // $post->subscription_id    = $subscription->id;
 
         $post->job_expiry_date    = $request->input('job_expiry_date', Carbon::now()->addMonths(6));			/* AND */
 		if( $post->job_status == 'Published' && $post->job_expiry_date > Carbon::now() ) $post->status = 1;		/* AND */
@@ -309,7 +324,8 @@ class JobPostController extends Controller
         $post->salary_period  = $request->input('salary_period');
         $post->hide_salary    = $request->input('hide_salary');
         $post->qualifications = json_encode($request->input('qualifications'));
-
+        $post->post_job_type = $request->post_job_type;
+        $post->application_url = $request->post_job_type === 'career_website' ? $request->application_url : null;
         if ($post->save()) {
             return response()->json([
                 'data' => [

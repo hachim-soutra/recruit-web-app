@@ -46,6 +46,7 @@ use App\Services\Payment\PaymentService;
 use Stripe;
 use Stripe\StripeClient;
 use Exception;
+use Illuminate\Validation\Rule;
 
 class EmployerController extends Controller
 {
@@ -105,6 +106,12 @@ class EmployerController extends Controller
                 'job_details'        => 'required',
                 'additinal_pay'      => 'nullable|array',
                 'job_status'         => 'required ',
+                'post_job_type' => 'required|in:recruit_ie,career_website',
+                'application_url' =>Rule::when(
+                    fn ($input) => $input->post_job_type === 'career_website',
+                    ['required', 'url'],
+                    ['nullable']
+                ),
             ]);
             if ($validator->fails()) {
                 return redirect()->back()->withInput($request->input())->withErrors($validator->errors()->all());
@@ -143,6 +150,8 @@ class EmployerController extends Controller
             $post->qualifications = json_encode($request->input('qualifications'));
             $post->created_by     = $user->id;
             $post->payment_status = "Paid";
+            $post->post_job_type = $request->post_job_type;
+            $post->application_url = $request->post_job_type === 'career_website' ? $request->application_url : null;
             if ($request->input('job_status') == 'Published') {
                 $post->job_status = "Published";
             } else {
@@ -205,6 +214,12 @@ class EmployerController extends Controller
                 'job_details'        => 'required',
                 'additinal_pay'      => 'nullable|array',
                 'job_status'         => 'required',
+                'post_job_type'      => 'required|in:recruit_ie,career_website',
+                'application_url'    => Rule::when(
+                    fn ($input) => $input->post_job_type === 'career_website',
+                    ['required', 'url'],
+                    ['nullable']
+                ),
             ]);
             if ($validator->fails()) {
                 return redirect()->back()->withInput($request->input())->withErrors($validator->errors()->all());
@@ -240,6 +255,8 @@ class EmployerController extends Controller
             $post->qualifications = json_encode($request->input('qualifications'));
             $post->created_by     = $user->id;
             $post->payment_status = "Paid";
+            $post->post_job_type = $request->post_job_type;
+            $post->application_url = $request->post_job_type === 'career_website' ? $request->application_url : null;
             if ($request->input('job_status') == 'Published') {
                 $post->job_status = "Published";
             } else {

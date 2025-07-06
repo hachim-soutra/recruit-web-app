@@ -13,6 +13,9 @@
         .bd-block {
             width: 66% !important;
         }
+        select.form-control:not([size]):not([multiple]) {
+            height: 52px !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -265,6 +268,23 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-6 mt-3 mt-md-0">
+                                    <label for="post_job_type">Job Posting Platform</label>
+                                    <select name="post_job_type" id="post_job_type" class="form-control" onchange="toggleApplicationUrlField()">
+                                        <option disabled {{ old('post_job_type', $jobDetail->post_job_type) ? '' : 'selected' }}>Choose option</option>
+                                        <option value="recruit_ie" {{ old('post_job_type', $jobDetail->post_job_type) === 'recruit_ie' ? 'selected' : '' }}>Recruit.ie</option>
+                                        <option value="career_website" {{ old('post_job_type', $jobDetail->post_job_type) === 'career_website' ? 'selected' : '' }}>Career Website</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mt-3 mt-md-0" id="application_url_wrapper"
+                                    style="display: {{ old('post_job_type', $jobDetail->post_job_type) === 'career_website' ? 'block' : 'none' }};">
+                                    <label for="application_url">Application URL</label>
+                                    <input type="url" name="application_url" id="application_url"
+                                        value="{{ old('application_url', $jobDetail->application_url) }}"
+                                        class="form-control" placeholder="https://example.com/apply">
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <label for="">Job Details</label>
                                     <textarea class="textarea" name="job_details" value="{{ $jobDetail->job_details }}" id="job_details"
@@ -461,5 +481,17 @@
             /* 333 */
         }
         google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script>
+        function toggleApplicationUrlField() {
+            const postJobType = document.getElementById('post_job_type').value;
+            const appUrlWrapper = document.getElementById('application_url_wrapper');
+            appUrlWrapper.style.display = (postJobType === 'career_website') ? 'block' : 'none';
+        }
+
+        // Trigger on page load (in case of edit or validation error)
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleApplicationUrlField();
+        });
     </script>
 @endsection
