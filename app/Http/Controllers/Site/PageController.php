@@ -65,9 +65,9 @@ class PageController extends Controller
         $data['events'] = Event::where('status', EventStatusEnum::SHOW_IN_HOME)->orderBy('id', 'DESC')->get();
         $data['advices'] = Advice::where('status', AdviceStatusEnum::SHOW_IN_HOME)->orderBy('id', 'DESC')->get();
         $data['latest_jobs'] = JobPost::where('show_in_home', '1')->orderBy('created_at', 'desc')->get();
-        $data['banner_stats']['companies_list'] = Employer::whereHas('user', function($query) {
-            $query->where('name', 'LIKE', 'A%');
-        })->with('user')->take(10)->get();
+        $latestTenJobs = JobPost::query()->distinct('employer_id')->orderBy('created_at', 'desc')->take(10)->get(['employer_id', 'created_at']);
+        $latestTenJobs = $latestTenJobs->pluck('employer_id')->toArray();
+        $data['banner_stats']['companies_list'] = Employer::query()->whereIn('user_id', $latestTenJobs)->with('user')->take(10)->get();
         $data['sectors'] = Industry::where('status', '1')->get('name');
         $data['roles'] = config('app.roles');
         $data['employers'] = Employer::whereHas("user", function ($q) {
