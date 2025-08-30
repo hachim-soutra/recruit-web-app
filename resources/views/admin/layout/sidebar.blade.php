@@ -191,6 +191,9 @@
                 <li class="{{ Route::is('admin.subscription.list') ? 'active' : '' }}">
                     <a href="{{ route('admin.subscription.list') }}"><i class="fa fa-list"></i>Inactive Subscriptions</a>
                 </li>
+                <li class="{{ Route::is('admin.subscription.add-manual') ? 'active' : '' }}">
+                    <a href="{{ route('admin.subscription.add-manual') }}"><i class="fa fa-plus"></i>Add Manual Subscription</a>
+                </li>
             </ul>
         </li>
         <li class="treeview {{ Route::is('admin.coupon.*') ? 'active menu-open' : '' }}">

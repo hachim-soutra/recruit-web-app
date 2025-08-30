@@ -497,9 +497,13 @@ Route::middleware(['role:admin', 'auth'])->group(function () {
         Route::get('/list', [SubscriptionController::class, 'index'])
             ->middleware(['permission:role_read'])
             ->name('list');
+        Route::get('/add-manual', [SubscriptionController::class, 'addManual'])
+            ->middleware(['permission:role_read'])
+            ->name('add-manual');
         Route::post('/{id}/active-waiting-subscription', [SubscriptionController::class, 'activateSubscription'])
             ->name('active_waiting_subscription');
     });
+    Route::post('/stripe/virement', [SubscriptionController::class, 'create'])->name('stripe.virement');
 
     #payment slot
     Route::prefix('slot')->name('slot.')->group(function () {
