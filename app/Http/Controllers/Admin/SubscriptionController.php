@@ -222,15 +222,15 @@ class SubscriptionController
         }
         try {
             Subscription::create([
+                'status'                => !$user->valid_subscription ? SubscriptionStatusEnum::IN_USE->value : SubscriptionStatusEnum::WAITING->value,
+                'payment_method_id'     => PaymentMethod::where('slug', 'bank_transfer')->first()?->id,
+                'estimated_end_date'    => now()->addMonths($planPackage->number_of_month),
+                'stripe_price'          => $planPackage->stripe_price,
+                'name'                  => $planPackage->name,
                 'plan_package_id'       => $planPackage->id,
                 'user_id'               => $user->id,
-                'start_date'            => now(),
-                'estimated_end_date'    => now()->addMonths($planPackage->number_of_month),
-                'status'                => !$user->valid_subscription ? SubscriptionStatusEnum::IN_USE->value : SubscriptionStatusEnum::WAITING->value,
-                'stripe_price'          => $planPackage->stripe_price,
                 'stripe_status'         => "active",
-                'name'                  => $planPackage->name,
-                'payment_method_id'     => PaymentMethod::where('slug', 'bank_transfer')->first()?->id,
+                'start_date'            => now(),
                 'quantity'              => 1,
             ]);
             return back()->with([

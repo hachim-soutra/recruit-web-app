@@ -40,22 +40,6 @@
                 </span>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="list-group">
-                <span
-                    class="list-group-item visitor {{ $subscriptionActive->estimated_end_date->diffInWeeks() > 1 ? 'text-success' : 'text-danger' }}">
-                    <h3 class="pull-right">
-                        <i class="fa fa-date"></i>
-                    </h3>
-                    <h4 class="list-group-item-heading count">
-                        Plan expiry date
-                    </h4>
-                    <p class="list-group-item-text">
-                        {{ $subscriptionActive->estimated_end_date->diffForHumans() }}
-                    </p>
-                </span>
-            </div>
-        </div>
     </div>
 
     <h5 class="mb-3">
@@ -72,7 +56,7 @@
                         <h5>{{ $package->plan->title }}</h5>
                         <p class="m-0">{{ $package->plan->slug }}</p>
                         <p class="m-0">Start date: {{ $subscriptionActive->created_at->format('d M Y') }}</p>
-                        <p class="m-0">End date: {{ $subscriptionActive->estimated_end_date->format('d M Y') }}
+                        <p class="m-0">End date: {{ $subscriptionActive->estimated_end_date?->format('d M Y') }}
                         </p>
                     </div>
                 </div>
