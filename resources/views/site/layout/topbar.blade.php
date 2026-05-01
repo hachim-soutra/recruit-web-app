@@ -105,7 +105,7 @@
                                     <li><a href="{{ route('find-career-coach') }}">Find Career Coaches</a></li>
                                     <li><a href="{{ route('favourite-job') }}">Favourite Jobs</a></li>
                                     <li><a href="{{ route('events') }}">Events</a></li>
-                                    <li><a href="{{ route('job-seeker.chat') }}">Chats</a></li>
+{{--                                    <li><a href="{{ route('job-seeker.chat') }}">Chats</a></li>--}}
                                 @endif
                                 @if (Auth::user()->user_type === 'employer')
                                     <li><a href="{{ route('post-job') }}">Post a job</a></li>
@@ -117,9 +117,9 @@
                                     <li><a href="{{ route('notification') }}">Notifications</a></li>
                                 @endif
                                 <li><a href="{{ route('setting') }}">Settings</a></li>
-                                @if (Auth::user()->user_type === 'coach')
-                                    <li><a href="{{ route('career-coach.chat') }}">Chats</a></li>
-                                @endif
+{{--                                @if (Auth::user()->user_type === 'coach')--}}
+{{--                                    <li><a href="{{ route('career-coach.chat') }}">Chats</a></li>--}}
+{{--                                @endif--}}
                                 <li><a href="{{ route('logout') }}">Sign out</a></li>
                             </ul>
                         </li>
