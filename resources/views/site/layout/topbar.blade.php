@@ -97,10 +97,13 @@
                                     <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                 @endif
 
-                                <li><a href="{{ route('profile') }}">Profile</a></li>
+                                    @if (Auth::user()->user_type === 'candidate')
+                                        <li><a href="{{ route('profile-candidate') }}">Profile</a>
+                                    @else
+                                        <li><a href="{{ route('profile') }}">Profile</a></li>
+                                    @endif
+
                                 @if (Auth::user()->user_type === 'candidate')
-                                    <li><a href="{{ route('education-qualification') }}">Education & Qualification</a>
-                                    </li>
                                     <li><a href="{{ route('common.job-listing') }}">Find a Job</a></li>
                                     <li><a href="{{ route('find-career-coach') }}">Find Career Coaches</a></li>
                                     <li><a href="{{ route('favourite-job') }}">Favourite Jobs</a></li>
