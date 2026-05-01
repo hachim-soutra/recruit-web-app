@@ -365,7 +365,6 @@ class DashboardController extends Controller
     public function profileUpdateCandidate(Request $request)
     {
         $languages = '';
-        $inputs = $request->all();
         $validator = Validator::make($request->all(), [
             'first_name'              => 'required',
             'last_name'               => 'required',
@@ -394,7 +393,7 @@ class DashboardController extends Controller
         if (gettype($request->input('languages', null)) && count($request->input('languages', '')) > 0) {
             $languages = implode(',', $request->input('languages', null));
         }
-        $candidate = Candidate::updateOrCreate(['user_id' => Auth::user()->id], [
+        Candidate::updateOrCreate(['user_id' => Auth::user()->id], [
             'address'                 => $request->input('address'),
             'city'                    => $request->input('city', null),
             'state'                   => $request->input('state', null),
@@ -425,6 +424,41 @@ class DashboardController extends Controller
             'salary_currency'         => $request->input('salary_currency', null),
             'languages'               => $languages,
         ]);
+
+        if ($request->input('candidateWorks', null) && count($request->input('candidateWorks', null)) > 0) {
+            WorkExperience::where('candidate_id', Auth::id())->delete();
+            for ($i = 0, $works = $request->input('candidateWorks'); $i < count($works); $i++) :
+                $experience = array(
+                    'candidate_id' => Auth::id(),
+                    'job_title' => $works[$i]['job_role'],
+                    'company' => $works[$i]['company_name'],
+                    'address' => $works[$i]['company_address'],
+                    'currently_work_here' => $works[$i]['currently_work_here'],
+                    'from_date' => $works[$i]['from_date'],
+                    'end_date' => $works[$i]['to_date'],
+                    'details' => $works[$i]['details']
+                );
+                WorkExperience::updateOrCreate([
+                    'candidate_id' => Auth::id(),
+                ], $experience);
+            endfor;    
+        }
+
+        if ($request->input('skills', null) && count($request->input('skills', null)) > 0) {
+            UserSkill::where('candidate_id', Auth::id())->delete();
+            for ($i = 0, $sk = $request->input('skills'); $i < count($sk); $i++) :
+                $data = array('candidate_id' => Auth::id(), 'skill_id' => $sk[$i]);
+                UserSkill::updateOrCreate($data, $data);
+            endfor;
+        } 
+
+        if ($request->input('education', null)) {
+            UserEducation::where('candidate_id', Auth::id())->delete();
+            for ($i = 0, $edus = $request->input('education'); $i < count($edus); $i++) :
+                $data = array('candidate_id' => Auth::id(), 'qualification_id' => $edus[$i]);
+                UserEducation::updateOrCreate($data, $data);
+            endfor;
+        }
 
         $myarray = $request->input('languages');
         if (count($myarray) > 0) {
