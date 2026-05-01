@@ -101,7 +101,7 @@
                                 @if (Auth::user()->user_type === 'candidate')
                                     <li><a href="{{ route('education-qualification') }}">Education & Qualification</a>
                                     </li>
-                                    <li><a href="{{ route('find-job') }}">Find a Job</a></li>
+                                    <li><a href="{{ route('common.job-listing') }}">Find a Job</a></li>
                                     <li><a href="{{ route('find-career-coach') }}">Find Career Coaches</a></li>
                                     <li><a href="{{ route('favourite-job') }}">Favourite Jobs</a></li>
                                     <li><a href="{{ route('events') }}">Events</a></li>
