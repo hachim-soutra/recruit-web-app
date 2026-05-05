@@ -68,7 +68,7 @@
                                 <a href="{{ route('blogs', ['type' => 'news']) }}">Our News</a>
                             </li>
                             <li>
-                                <a href="{{ route('blogs', ['type' => 'events']) }}">Our Events</a>
+                                <a href="https://www.jobsexpo.ie/upcoming-events/" target="_blank">Our Events</a>
                             </li>
                             <li>
                                 <a href="{{ route('blogs', ['type' => 'advices']) }}">Our Advice</a>
@@ -104,7 +104,7 @@
                                     <li><a href="{{ route('common.job-listing') }}">Find a Job</a></li>
                                     <li><a href="{{ route('find-career-coach') }}">Find Career Coaches</a></li>
                                     <li><a href="{{ route('favourite-job') }}">Favourite Jobs</a></li>
-                                    <li><a href="{{ route('events') }}">Events</a></li>
+                                    <li><a href="https://www.jobsexpo.ie/upcoming-events/" target="_blank">Events</a></li>
 {{--                                    <li><a href="{{ route('job-seeker.chat') }}">Chats</a></li>--}}
                                 @endif
                                 @if (Auth::user()->user_type === 'employer')
