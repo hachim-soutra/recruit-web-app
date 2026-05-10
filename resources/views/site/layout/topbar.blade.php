@@ -68,7 +68,7 @@
                                 <a href="{{ route('blogs', ['type' => 'news']) }}">Our News</a>
                             </li>
                             <li>
-                                <a href="{{ route('blogs', ['type' => 'events']) }}">Our Events</a>
+                                <a href="https://www.jobsexpo.ie/upcoming-events/" target="_blank">Our Events</a>
                             </li>
                             <li>
                                 <a href="{{ route('blogs', ['type' => 'advices']) }}">Our Advice</a>
@@ -97,15 +97,18 @@
                                     <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                 @endif
 
-                                <li><a href="{{ route('profile') }}">Profile</a></li>
+                                    @if (Auth::user()->user_type === 'candidate')
+                                        <li><a href="{{ route('profile-candidate') }}">Profile</a>
+                                    @else
+                                        <li><a href="{{ route('profile') }}">Profile</a></li>
+                                    @endif
+
                                 @if (Auth::user()->user_type === 'candidate')
-                                    <li><a href="{{ route('education-qualification') }}">Education & Qualification</a>
-                                    </li>
-                                    <li><a href="{{ route('find-job') }}">Find a Job</a></li>
+                                    <li><a href="{{ route('common.job-listing') }}">Find a Job</a></li>
                                     <li><a href="{{ route('find-career-coach') }}">Find Career Coaches</a></li>
                                     <li><a href="{{ route('favourite-job') }}">Favourite Jobs</a></li>
-                                    <li><a href="{{ route('events') }}">Events</a></li>
-                                    <li><a href="{{ route('job-seeker.chat') }}">Chats</a></li>
+                                    <li><a href="https://www.jobsexpo.ie/upcoming-events/" target="_blank">Events</a></li>
+{{--                                    <li><a href="{{ route('job-seeker.chat') }}">Chats</a></li>--}}
                                 @endif
                                 @if (Auth::user()->user_type === 'employer')
                                     <li><a href="{{ route('post-job') }}">Post a job</a></li>
@@ -117,9 +120,9 @@
                                     <li><a href="{{ route('notification') }}">Notifications</a></li>
                                 @endif
                                 <li><a href="{{ route('setting') }}">Settings</a></li>
-                                @if (Auth::user()->user_type === 'coach')
-                                    <li><a href="{{ route('career-coach.chat') }}">Chats</a></li>
-                                @endif
+{{--                                @if (Auth::user()->user_type === 'coach')--}}
+{{--                                    <li><a href="{{ route('career-coach.chat') }}">Chats</a></li>--}}
+{{--                                @endif--}}
                                 <li><a href="{{ route('logout') }}">Sign out</a></li>
                             </ul>
                         </li>

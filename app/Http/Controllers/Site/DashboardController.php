@@ -351,21 +351,22 @@ class DashboardController extends Controller
         $data = array(
             'skills' => Skill::where('status', '1')->get(),
             'qualification' => Qualification::where('status', '1')->get(),
-            'userSkill' => UserSkill::with('skill')->where('candidate_id', Auth::id())->get(),
-            'userEdu' => UserEducation::with('qualification')->where('candidate_id', Auth::id())->get(),
+            'userSkill' => UserSkill::with('skill')->where('candidate_id', Auth::id())->pluck('skill_id')->toArray(),
+            'userEdu' => UserEducation::with('qualification')->where('candidate_id', Auth::id())->pluck('qualification_id')->toArray(),
+            'userAppliedJobs' => JobApply::with('jobs', 'candidate')->where('candidate_id', Auth::id())->orderBy('id', 'DESC')->paginate(6),
             'language' => Language::where('status', '1')->get(),
             'employeeDetail' => Employer::where('user_id', Auth::id())->first(),
             'industry' => Industry::where('status', '1')->get(),
             'coachDetail' => Coach::where('user_id', Auth::id())->first(),
             'candidateDetail' => Candidate::where('user_id', Auth::id())->first(),
+            'candidateWorks' => WorkExperience::where('candidate_id', Auth::id())->where('status', '1')->orderBy('from_date', 'desc')->get(),
         );
-        return view('site.pages.profile_education', compact('data'));
+        return view('site.pages.profile_candidate', compact('data'));
     }
     #profile update
     public function profileUpdateCandidate(Request $request)
     {
         $languages = '';
-        $inputs = $request->all();
         $validator = Validator::make($request->all(), [
             'first_name'              => 'required',
             'last_name'               => 'required',
@@ -375,6 +376,13 @@ class DashboardController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withInput($request->input())->withErrors($validator->errors()->all());
         }
+
+        $langRequest = $request->input('languages', []);
+        $candidateWorkRequest = $request->input('candidateWorks', []);
+        $skillRequest = $request->input('skill', []);
+        $educationRequest = $request->input('education', []);
+
+
         $user             = User::findOrFail(Auth::user()->id);
         $user->first_name = $request->input('first_name');
         $user->last_name  = $request->input('last_name');
@@ -391,10 +399,9 @@ class DashboardController extends Controller
         if ($user->email_verified == 0) {
             Mail::to($user->email)->send(new VerifyUser($user));
         }
-        if (gettype($request->input('languages', null)) && count($request->input('languages', '')) > 0) {
-            $languages = implode(',', $request->input('languages', null));
-        }
-        $candidate = Candidate::updateOrCreate(['user_id' => Auth::user()->id], [
+
+        $languages = count($langRequest) > 0 ? implode(',', $langRequest) : null;
+        Candidate::updateOrCreate(['user_id' => Auth::user()->id], [
             'address'                 => $request->input('address'),
             'city'                    => $request->input('city', null),
             'state'                   => $request->input('state', null),
@@ -413,8 +420,8 @@ class DashboardController extends Controller
             'year_of_graduation'      => $request->input('year_of_graduation', null),
             'education_type'          => $request->input('education_type', null),
             'date_of_birth'           => $request->input('dob', null),
-            'candidate_type'          => $request->input('candidate_type', null),
-            'preferred_job_type'      => $request->input('preferred_job_type', ''),
+            'candidate_type'          => $request->input('candidate_type', 'Entry level'),
+            'preferred_job_type'      => $request->input('preferred_job_type', 'Full time'),
             'gender'                  => $request->input('gender', null),
             'marital_status'          => $request->input('marital_status', null),
             'resume_title'            => $request->input('resume_title', null),
@@ -426,9 +433,28 @@ class DashboardController extends Controller
             'languages'               => $languages,
         ]);
 
-        $myarray = $request->input('languages');
-        if (count($myarray) > 0) {
-            foreach ($myarray as $key => $value) {
+        if (count($skillRequest) > 0) {
+            UserSkill::where('candidate_id', Auth::id())->delete();
+            for ($i = 0, $sk = $skillRequest; $i < count($sk); $i++) :
+                $data = array('candidate_id' => Auth::id(), 'skill_id' => $sk[$i]);
+                UserSkill::updateOrCreate($data, $data);
+            endfor;
+        } else {
+            UserSkill::where('candidate_id', Auth::id())->delete();
+        }
+
+        if (count($educationRequest) > 0) {
+            UserEducation::where('candidate_id', Auth::id())->delete();
+            for ($i = 0, $edus = $educationRequest; $i < count($edus); $i++) :
+                $data = array('candidate_id' => Auth::id(), 'qualification_id' => $edus[$i]);
+                UserEducation::updateOrCreate($data, $data);
+            endfor;
+        } else {
+            UserEducation::where('candidate_id', Auth::id())->delete();
+        }
+
+        if (count($langRequest) > 0) {
+            foreach ($langRequest as $key => $value) {
                 $lang_have = Language::where('name', '=', $value)->count();
                 if ($lang_have == 0) {
                     $lang         = new Language;
@@ -445,6 +471,10 @@ class DashboardController extends Controller
     public function workExperience(Request $request)
     {
         $inputs = $request->all();
+        if (isset($inputs['deleteexprowid']) && !empty($inputs['deleteexprowid'])) {
+            WorkExperience::where('id', $inputs['deleteexprowid'])->delete();
+            return redirect()->back()->withSuccess(ucfirst(Auth::user()->user_type) . " Work Experience Deleted.");
+        }
         $rules = [
             'job_role' => 'required',
             'company_name' => 'required',

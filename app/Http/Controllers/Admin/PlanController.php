@@ -55,7 +55,7 @@ class PlanController extends Controller
         $plan = $this->planService->store($request->toArray());
 
         if ($plan->id) {
-            if (count($request->employers) > 0) {
+            if ($request->employers && count($request->employers) > 0) {
                 $this->planService->assignEmployersToPlan($plan, $request->employers); // this is job for create payement link
             }
             return response()->json([

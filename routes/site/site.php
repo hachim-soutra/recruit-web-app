@@ -150,7 +150,7 @@ Route::group(['middleware' => 'revalidate'], function () {
         #exployer
         Route::get('applied-job-detail/{appliedjobid?}', 'DashboardController@appliedJobDetail')->name('applied-job-detail');
         #candidate
-        Route::get('education-qualification', 'DashboardController@educationQualification')->name('education-qualification');
+        Route::get('profile-candidate', 'DashboardController@educationQualification')->name('profile-candidate');
         Route::post('profile-update-candidate', 'DashboardController@profileUpdateCandidate')->name('profile-update-candidate');
         Route::post('profile-common-ajax', 'DashboardController@commonajax')->name('profile-common-ajax');
         Route::post('profile-file-upload', 'DashboardController@fileUpload')->name('profile-file-upload');

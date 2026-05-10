@@ -45,6 +45,21 @@
                                     </div>
                                 </div>
                             </div>
+                            @if ($plan->plan_for == \App\Enum\Payments\PlanForEnum::EMPLOYER && $plan->plan_type == \App\Enum\Payments\PlanTypeStatusEnum::SITE)
+                                <div class="col-md-6">
+                                    <label for="event_date">Best Value</label>
+                                    <div class="form-group">
+                                        <div class="form-check  radio-inline">
+                                            <input class="form-check-input" type="radio" name="best_value" id="best_value1" value="1" {{ $plan->best_value ? 'checked' : ''}}/>
+                                            <label class="form-check-label" for="best_value1">Yes</label>
+                                        </div>
+                                        <div class="form-check radio-inline">
+                                            <input class="form-check-input" type="radio" name="best_value" id="best_value2" value="0" {{ !$plan->best_value ? 'checked' : ''}} />
+                                            <label class="form-check-label" for="best_value2">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="col-md-6">
                                 <label for="">Plan Type</label>
                                 <select name="plan_type" id="plan_type"
@@ -57,8 +72,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="row">
+           
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="title">Plan Title</label>
@@ -72,9 +86,7 @@
                                     <input type="text" autocomplete="off" class="form-control" id="slug" name="slug" placeholder="Plan Slug" value="{{ $plan->slug }}">
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="event_date">Slot Number</label>
@@ -93,8 +105,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="row">
+           
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="event_date">Price</label>
@@ -107,9 +118,23 @@
                                     <textarea class="form-control" id="description" name="description">{{ $plan->description }}</textarea>
                                 </div>
                             </div>
+                            @if($plan->plan_for == \App\Enum\Payments\PlanForEnum::EMPLOYER && $plan->plan_type == \App\Enum\Payments\PlanTypeStatusEnum::SITE)
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="badge_text">Caption</label>
+                                        <textarea class="form-control" id="badge_text" name="badge_text">{{ $plan->badge_text }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="features">Features</label>
+                                        <textarea class="form-control" id="features" name="features">{{ implode(', ', $plan->features ?? []) }}</textarea>
+                                        <small class="form-text text-muted">Separate features by comma(,) e.g. feature1,feature2,feature3</small>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         <hr/>
-                        <div class="row">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-success btn-block">Save</button>
                             </div>
