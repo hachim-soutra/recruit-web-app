@@ -74,8 +74,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Plan For</label>
-                                    <select name="plan_for" id="plan_for" onchange="chooseStateFromCountry(this)"
-                                        class="form-control">
+                                    <select name="plan_for" id="plan_for" onchange="handlePlanForChange()" class="form-control">
                                         <option disabled selected readonly>Choose Type</option>
                                         @foreach (\App\Enum\Payments\PlanForEnum::cases() as $type)
                                             <option value="{{ $type->value }}">
@@ -86,7 +85,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Plan Type</label>
-                                    <select name="plan_type" id="plan_type" class="form-control">
+                                    <select name="plan_type" id="plan_type" onchange="handlePlanForChange()" class="form-control">
                                         <option disabled selected readonly>Slot Type</option>
                                         @foreach (\App\Enum\Payments\PlanTypeStatusEnum::cases() as $type)
                                             <option value="{{ $type->name }}">
@@ -101,7 +100,26 @@
                                         <textarea class="form-control" id="description" name="description"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                
+                                <div class="col-md-12 employer-box" style="display: none;">
+                                        <label for="badge_text">Caption</label>
+                                        <textarea class="form-control" id="badge_text" name="badge_text"></textarea>
+                                </div>
+                                <div class="col-md-12 employer-box" style="display: none;">
+                                        <label for="features">Features</label>
+                                        <textarea class="form-control" id="features" name="features" rows="3"></textarea>
+                                        <small class="form-text text-muted">Separate features by comma(,) e.g. feature1,feature2,feature3</small>
+                                </div>
+                                <div class="col-md-12 employer-box" style="display: none; margin: 15px 0px;">
+                                    <label class="form-text text-muted" for="best_value" style="font-weight: 400; font-size: 14px;">
+                                        <input type="checkbox" name="best_value" id="best_value" value="1"> 
+                                        Mark this plan as the <strong>Best Value</strong> subscription plan.
+                                        When enabled, this plan will be highlighted to users as the recommended plan with the best overall value.
+                                    </label>
+                                </div>
+                                
+                      
+                                <div class="col-md-12 ">
                                     <div class="box">
                                         <div class="box-body table-responsive no-padding table-wrap">
                                             <table class="table table-hover" id="myTable">
@@ -146,7 +164,17 @@
 @endsection
 
 @section('myscript')
-
+<script>
+    function handlePlanForChange() {
+        var planForSelect = document.getElementById('plan_for');
+        var planTypeSelect = document.getElementById('plan_type');
+        if (planForSelect.value == 'EMPLOYER' && planTypeSelect.value == 'SITE') {
+            $('.employer-box').show();
+        } else {
+            $('.employer-box').hide();
+        }
+    }
+</script>
     <!-- InputMask -->
     <script src="{{ asset('backend/plugin/input-mask/jquery.inputmask.js') }}"></script>
     <script src="{{ asset('backend/plugin/input-mask/jquery.inputmask.date.extensions.js') }}"></script>

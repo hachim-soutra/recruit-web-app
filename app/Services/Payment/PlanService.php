@@ -40,6 +40,9 @@ class PlanService
     {
         $product = $this->stripeService->create_product($planData);
         if ($product->id) {
+            if ($planData['best_value']) {
+                Plan::where('best_value', true)->update(['best_value' => false]);
+            }
             $plan = Plan::create([
                 'title'               => $planData['title'],
                 'slug'                => $planData['slug'],
@@ -48,6 +51,9 @@ class PlanService
                 'plan_type'           => $planData['plan_type'],
                 'job_number'          => $planData['job_number'],
                 'status'              => PlanStatusEnum::ACTIVE,
+                'features'            => explode(',', $planData['features'] ?? ''),
+                'best_value'          => $planData['best_value'] ?? false,
+                'badge_text'         => $planData['badge_text'] ?? null,
             ]);
             $package = PlanPackage::create([
                 'number_of_month'     => $planData['number_of_month'],
@@ -71,6 +77,9 @@ class PlanService
     public function update(array $planData, Plan $plan): bool
     {
         try {
+            if (!$plan->best_value && $planData['best_value'] == "1") {
+                Plan::where('best_value', 1)->update(['best_value' => 0]);
+            }
             $plan->update([
                 'title'               => $planData['title'],
                 'slug'                => $planData['slug'],
@@ -78,7 +87,10 @@ class PlanService
                 'status'              => $planData['status'],
                 'plan_for'            => $planData['plan_for'],
                 'plan_type'           => $planData['plan_type'],
-                'job_number'          => $planData['job_number']
+                'job_number'          => $planData['job_number'],
+                'features'            => explode(',', $planData['features'] ?? ''),
+                'best_value'          => $planData['best_value'] == "1" ? 1 : 0,
+                'badge_text'         => $planData['badge_text'] ?? null,
             ]);
             $package = $plan->packages[0];
 

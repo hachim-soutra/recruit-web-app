@@ -34,7 +34,7 @@
                 </div>
                 <div class="box-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 @if ($plan->status==\App\Enum\Payments\PlanStatusEnum::ACTIVE)
                                     <a href="#" class="btn btn-sm btn-success blockIns" data-id="{{ $plan->id }}" data-method="PATCH" data-toggle="tooltip" data-placement="bottom" title="ACTIVE">
                                         <i class="fa fa-fw fa-check"></i> Active
@@ -44,6 +44,13 @@
                                         <i class="fa fa-fw fa-times"></i> In-active
                                     </a>
                                 @endif
+                                @if ($plan->plan_for == \App\Enum\Payments\PlanForEnum::EMPLOYER && $plan->plan_type == \App\Enum\Payments\PlanTypeStatusEnum::SITE)
+                                    @if ($plan->best_value)
+                                        <div class="btn btn-sm btn-success activeIns">
+                                        <i class="fa fa-fw fa-star"></i> BEST VALUE</div>
+                                    @endif
+                                @endif
+                                    
                             </div>
                         </div>
                         <div class="row">
@@ -99,16 +106,38 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <label for="details">Description</label>
-                                    <br />
-                                 {!! $plan->description !!}
+                        @if ($plan->plan_for == \App\Enum\Payments\PlanForEnum::EMPLOYER && $plan->plan_type == \App\Enum\Payments\PlanTypeStatusEnum::SITE)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="details">Caption</label>
+                                        <textarea class="form-control" id="badge_text" name="badge_text" rows="3" readonly>{!! $plan->badge_text !!}</textarea>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="details">features</label>
+                                        <br />
+                                        <ul>
+                                            @foreach ($plan->features as $feature)
+                                                <li>{{ $feature }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="details">Description</label>
+                                        <br />
+                                    {!! $plan->description !!}
+                                    </div>
+                                </div>
+                            </div>
                         <hr/>
                 </div>
             </div>

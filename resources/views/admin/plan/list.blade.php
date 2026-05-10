@@ -63,7 +63,13 @@
                                 <tr>
                                     <td>{{ $e->plan_for->value }}</td>
                                     <td>{{ $e->plan_type->value }}</td>
-                                    <td>{{ $e->title }}</td>
+                                    <td>
+                                        {{ $e->title }} 
+                                        @if ($e->best_value)
+                                            <span class="label label-success">
+                                            <i class="fa fa-fw fa-star"></i> Best Value</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $e->slug }}</td>
                                     <td>{{ $e->job_number }}</td>
                                     <td class="text-center">
