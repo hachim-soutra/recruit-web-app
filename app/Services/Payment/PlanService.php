@@ -48,6 +48,9 @@ class PlanService
                 'plan_type'           => $planData['plan_type'],
                 'job_number'          => $planData['job_number'],
                 'status'              => PlanStatusEnum::ACTIVE,
+                'features'            => explode(',', $planData['features'] ?? ''),
+                'best_value'          => $planData['best_value'] ?? false,
+                'badge_text'         => $planData['badge_text'] ?? null,
             ]);
             $package = PlanPackage::create([
                 'number_of_month'     => $planData['number_of_month'],
@@ -78,7 +81,10 @@ class PlanService
                 'status'              => $planData['status'],
                 'plan_for'            => $planData['plan_for'],
                 'plan_type'           => $planData['plan_type'],
-                'job_number'          => $planData['job_number']
+                'job_number'          => $planData['job_number'],
+                'features'            => explode(',', $planData['features'] ?? ''),
+                'best_value'          => $planData['best_value'] ?? false,
+                'badge_text'         => $planData['badge_text'] ?? null,
             ]);
             $package = $plan->packages[0];
 

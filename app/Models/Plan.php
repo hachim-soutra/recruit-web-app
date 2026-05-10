@@ -24,13 +24,18 @@ class Plan extends Model
         'plan_for',
         'job_number',
         'status',
-        'plan_type'
+        'plan_type',
+        'features',
+        'best_value',
+        'badge_text',
     ];
 
     protected $casts = [
         'status'            => PlanStatusEnum::class,
         'plan_for'          => PlanForEnum::class,
-        'plan_type'          => PlanTypeStatusEnum::class
+        'plan_type'         => PlanTypeStatusEnum::class,
+        'features'          => 'array',
+        'best_value'        => 'boolean',
     ];
 
     /**

@@ -54,4 +54,15 @@ class PlanPackage extends Model
     {
         return $this->belongsToMany(Slot::class, 'plan_package_slot')->withTimestamps();
     }
+
+    public function getPriceSubAttribute()
+    {
+        if ($this->number_of_month % 12 === 0) {
+            return $this->number_of_month / 12 == 1 ? " year" : ($this->number_of_month / 12). " years";
+        } elseif ($this->number_of_month > 1) {
+            return $this->number_of_month. " months";
+        } else {
+            return "month";
+        }
+    }
 }

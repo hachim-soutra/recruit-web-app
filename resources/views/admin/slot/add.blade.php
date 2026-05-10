@@ -43,7 +43,7 @@
                                     <option disabled selected readonly>Choose Package</option>
                                     @foreach ($packages as $item)
                                         <option value="{{ $item->id }}">
-                                            {{ $item->plan->title }}
+                                            {{ $item->plan ? $item->plan->title : 'No Plan Assigned' }}
                                         </option>
                                     @endforeach
                                 </select>
