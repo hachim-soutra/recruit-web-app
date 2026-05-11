@@ -1,5 +1,4 @@
 <div class="col-md-4 mb-5">
-
     <!--PRICE CONTENT START-->
     <div class="generic_content clearfix h-100">
         <!--HEAD PRICE DETAIL START-->

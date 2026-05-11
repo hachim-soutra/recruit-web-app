@@ -204,22 +204,19 @@
                                 </a>
                             </div>
                         </div>
-                    @elseif (isset($data['waitingSubscription']) && $data['waitingSubscription'])
+                    @else
                         <div class="row mb-3">
-                            <div class="ml-auto col-12 col-md-4">
+                            <div class="ml-auto col-12 col-md-3">
                                 <a href="{{ route('welcome') }}" type="button" class="btn btn-submit btn-md btn-block"
                                     style="background-color:#eb1829;color:white;width:100%;">
                                     <i class="fa fa-ticket"></i>
                                     Go To Home
                                 </a>
                             </div>
-                        </div>
-                    @else
-                        <div class="row mb-3">
-                            <div class="ml-auto col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <a href="{{ route('subscription') }}" type="button" class="btn btn-submit btn-md btn-block"
-                                    style="background-color:#eb1829;color:white;width:100%;">
-                                    <i class="fa fa-ticket"></i>
+                                   style="background-color:#eb1829;color:white;width:100%;">
+                                    <i class="fa fa-credit-card"></i>
                                     Go To Subscription
                                 </a>
                             </div>
@@ -403,13 +400,14 @@
                         <div class="alert alert-secondary" role="alert">
                             <h4 class="alert-heading">Welcome to your employer account!</h4>
                             <p>
-                                It has come to our attention that there is a pending subscription associated with your
-                                account,
-                                which may either be unpaid or paid but not yet activated. To obtain more information and
-                                resolve
-                                this matter promptly, we kindly ask you to reach out to our dedicated support team using the
-                                contact
-                                details provided below.
+                                It has come to our attention that there is a pending subscription associated with your account,
+                                which may either be unpaid or paid but not yet activated. However, our records currently show that you do not
+                                have any active or paid subscription with us.
+                            </p>
+                            <p>
+                                To obtain more information and resolve this matter promptly,
+                                please click the button below to visit your subscription page, where you can review the details or
+                                contact our dedicated support team using the contact information provided.
                             </p>
                             <p>
                                 Thank you for your cooperation.
