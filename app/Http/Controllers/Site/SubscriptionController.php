@@ -27,6 +27,9 @@ class SubscriptionController extends Controller
             ->first();
         $sortedPlans = $plans->sortBy(fn($plan) => $plan->packages->first()->price)->values();
         $biggestPlan = $sortedPlans->where('best_value', true)->first();
+        if (!$biggestPlan) {
+            $biggestPlan = $sortedPlans->last();
+        }
         $sortedPlans = $sortedPlans->reject(fn($plan) => $plan->id === $biggestPlan->id)->values();
         $middleIndex = ceil($sortedPlans->count() / 2);
 

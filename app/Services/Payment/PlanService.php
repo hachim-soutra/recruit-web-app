@@ -40,6 +40,9 @@ class PlanService
     {
         $product = $this->stripeService->create_product($planData);
         if ($product->id) {
+            if ($planData['best_value']) {
+                Plan::where('best_value', true)->update(['best_value' => false]);
+            } 
             $plan = Plan::create([
                 'title'               => $planData['title'],
                 'slug'                => $planData['slug'],
@@ -74,6 +77,9 @@ class PlanService
     public function update(array $planData, Plan $plan): bool
     {
         try {
+            if ($planData['best_value']) {
+                Plan::where('best_value', true)->update(['best_value' => false]);
+            }
             $plan->update([
                 'title'               => $planData['title'],
                 'slug'                => $planData['slug'],

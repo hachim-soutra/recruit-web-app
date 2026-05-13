@@ -141,7 +141,8 @@
                     </p>
                 </div>
             </div>
-            <div class="row justify-content-center px-5">
+            <div class="row justify-content-center flex-warp m-auto flex-md-nowrap p-3" style="overflow-x: auto;">
+                <div class="col-md-12"></div>
                 @foreach ($sortedPlans as $plan)
                     @include('site.pages.partial.subscription.subscription-item')
                 @endforeach

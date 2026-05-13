@@ -1,4 +1,4 @@
-<div class="col-lg-3 mt-3">
+<div class="col-lg-4 col-12 {{ $plan->best_value ? 'mt-4' : 'mt-3' }}">
     <div class="pricing-card h-100 {{ $plan->best_value ? 'featured-card' : '' }}">
         @if ($plan->best_value)
              <div class="hot-badge">BEST VALUE</div>
@@ -14,7 +14,7 @@
             <div class="price-sub small">{{ $plan->job_number }} {{ $plan->title }} job {{ $plan->job_number > 1 ? 'slots' : 'slot' }} available.</div>
         </div>
         <div class="feature-list flex-1">
-            @foreach ($plan->features as $feature)
+            @foreach ($plan->features ?? [] as $feature)
                 <div class="feature-item">
                     <i class="fa fa-check-circle"></i>
                     <div class="feature-text"><b>{{ $feature }}</b></div>
@@ -22,7 +22,7 @@
             @endforeach
         </div>
         <a class="btn btn-action w-100 {{ $plan->best_value ? 'btn-red' : 'btn-outline-dark' }}" href="{{ route('choose-subscription', ['plan_packages' => $package]) }}">
-            Buy {{ strtolower($plan->slug) }} plan
+            Buy plan
         </a>
         <div class="text-center trust-badge">{{ $plan->badge_text }}</div>
     </div>
